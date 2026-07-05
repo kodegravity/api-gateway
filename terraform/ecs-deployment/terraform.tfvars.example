@@ -1,0 +1,38 @@
+# Example terraform.tfvars file
+# Copy this file to terraform.tfvars and fill in your values
+
+aws_region     = "ca-central-1"
+environment    = "dev"
+aws_account_id = "123456789012"  # Replace with your AWS Account ID
+
+# VPC Configuration (from your infrastructure Terraform outputs)
+vpc_id             = "vpc-xxxxxxxxxxxxxxxxx"
+private_subnet_ids = ["subnet-xxxxxxxxxxxxxxxxx", "subnet-yyyyyyyyyyyyyyyyy"]
+public_subnet_ids  = ["subnet-zzzzzzzzzzzzzzzzz", "subnet-aaaaaaaaaaaaaaaaa"]
+
+# ECS Configuration
+ecs_cluster_name = "food-delivery-dev-cluster"
+
+# Database Configuration
+db_host       = "fooddelivery-db.xxxxxxxxxxxx.ca-central-1.rds.amazonaws.com"
+db_name       = "fooddelivery"
+db_secret_arn = "arn:aws:secretsmanager:ca-central-1:123456789012:secret:food-delivery/database-xxxxxx"
+
+# ALB Configuration
+alb_arn                = "arn:aws:elasticloadbalancing:ca-central-1:123456789012:loadbalancer/app/food-delivery-alb/xxxxxxxxxxxxxx"
+alb_listener_arn       = "arn:aws:elasticloadbalancing:ca-central-1:123456789012:listener/app/food-delivery-alb/xxxxxxxxxxxxxx/yyyyyyyyyyyyyy"
+alb_security_group_id  = "sg-xxxxxxxxxxxxxxxxx"
+
+# Service Configuration
+desired_count          = 1
+enable_execute_command = true
+
+# CloudWatch Configuration
+log_retention_days = 7
+
+# Tags
+tags = {
+  Project     = "food-delivery"
+  Environment = "dev"
+  ManagedBy   = "Terraform"
+}
